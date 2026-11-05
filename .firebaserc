@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "semkhor-hosting"
+  },
+  "targets": {
+    "semkhor-hosting": {
+      "hosting": {
+        "lwrfc": ["lwrfc-org"]
+      }
+    }
+  }
+}
