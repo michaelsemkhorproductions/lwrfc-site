@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "lwrfc",
     "public": ".",
     "ignore": [
       "firebase.json",
@@ -12,11 +13,21 @@
     "headers": [
       {
         "source": "**/*.@(webp|png|jpg|woff2)",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=2592000"
+          }
+        ]
       },
       {
         "source": "**/*.@(css|js)",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=86400"
+          }
+        ]
       }
     ]
   }
