@@ -24,6 +24,25 @@ changes:
 - Removed a Cloudflare script that the ChatGPT host injects; it would fail on any other server.
 - Added link-preview tags (`images/share.jpg`), a favicon, and dropped "| V9" from the page title.
 
+## Hosting (2026-11-05)
+
+Firebase Hosting, project `semkhor-hosting` (Semkhor), site **`lwrfc-org`** → https://lwrfc-org.web.app
+Deploy from this folder: `firebase deploy --only hosting:lwrfc` (target defined in `.firebaserc`).
+`.git`, README and Firebase config files are excluded from the upload.
+
+Custom domains added in Firebase: **www.lwrfc.org** (main) and **lwrfc.org** (redirects to www).
+DNS for lwrfc.org is hosted at **HostGator** (nameservers hgns1/hgns2.hostgator.com; registrar
+Network Solutions). Records Jeff must set there:
+
+| Host | Type | Value |
+|---|---|---|
+| `lwrfc.org` (@) | A | `199.36.158.100` (replace the existing A `208.91.197.15`) |
+| `lwrfc.org` (@) | TXT | `hosting-site=lwrfc-org` |
+| `www` | CNAME | `lwrfc-org.web.app` (replace the existing `www` A record) |
+
+Firebase then issues the SSL certificate automatically (minutes to 24 hours).
+The GitHub Pages copy (michaelsemkhorproductions.github.io/lwrfc-site) is only a preview now.
+
 ## Before it goes live
 
 - **Domain:** `lwrfc.org` / `www.lwrfc.org` currently resolve to `208.91.197.15`, a registrar
