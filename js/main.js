@@ -22,3 +22,22 @@ if(location.hash==='#research'){document.getElementById('research-details').open
   },{threshold:0.2});
   observer.observe(section);
 })();
+
+// 2026-11-06: phone menu + bottom Give / Get involved bar.
+(function(){
+  var toggle=document.getElementById('menuToggle'), menu=document.getElementById('mobileMenu');
+  if(toggle&&menu){
+    function close(){menu.hidden=true;toggle.setAttribute('aria-expanded','false');}
+    toggle.addEventListener('click',function(){var open=menu.hidden;menu.hidden=!open;toggle.setAttribute('aria-expanded',open?'true':'false');});
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  }
+  var bar=document.getElementById('mobileGive'), hero=document.querySelector('.hero'), give=document.getElementById('give');
+  if(bar&&hero&&give&&'IntersectionObserver' in window){
+    var heroIn=true, giveIn=false;
+    function update(){var show=!heroIn&&!giveIn;bar.classList.toggle('is-visible',show);bar.setAttribute('aria-hidden',show?'false':'true');bar.querySelectorAll('a').forEach(function(a){a.tabIndex=show?0:-1;});}
+    new IntersectionObserver(function(e){heroIn=e[0].isIntersecting;update();}).observe(hero);
+    new IntersectionObserver(function(e){giveIn=e[0].isIntersecting;update();}).observe(give);
+    update();
+  } else if(bar){bar.classList.add('is-visible');}
+})();

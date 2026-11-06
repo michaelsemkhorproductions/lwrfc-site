@@ -18,3 +18,40 @@
 picture{display:block}
 .logo picture,.logo img{width:100%}
 .give p.give-more{margin-top:18px}
+
+/* ---- 2026-11-06: easier to give / volunteer on phones (feedback from Lidis) ---- */
+.header-actions{display:flex;align-items:center;gap:12px}
+.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;padding:0 11px;background:none;border:1px solid #374237;cursor:pointer}
+.menu-toggle__bar{display:block;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(2){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(3){opacity:0}
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(4){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{background:#050705;border-top:1px solid #374237}
+.mobile-menu[hidden]{display:none}
+.mobile-menu .wrap{display:flex;flex-direction:column;padding:8px 0 22px}
+.mobile-menu a:not(.btn){display:block;padding:15px 0;border-bottom:1px solid #263026;font-size:18px;font-weight:700;text-decoration:none}
+.mobile-menu .btn{margin-top:18px;justify-content:center;gap:14px}
+
+.help-ways{margin-top:34px;border-top:1px solid rgba(16,39,25,.25);padding-top:24px}
+.help-ways__title{font-size:17px!important;font-weight:700;margin-bottom:14px}
+.help-ways__list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.help-way{display:flex;flex-direction:column;gap:3px;padding:15px 16px;min-height:72px;justify-content:center;border:2px solid var(--green);color:var(--green);text-decoration:none;background:rgba(255,255,255,.35)}
+.help-way:hover{background:var(--green);color:#fff}
+.help-way__label{font-weight:700;font-size:17px}
+.help-way__hint{font-size:14px;opacity:.85}
+
+.mobile-give{display:none}
+@media(max-width:700px){
+  .menu-toggle{display:flex}
+  .header .header-actions .btn{display:inline-flex}
+  .help-ways__list{grid-template-columns:1fr}
+  .help-way{min-height:64px}
+  .mobile-give{position:fixed;left:0;right:0;bottom:0;z-index:15;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(5,7,5,.96);border-top:1px solid #374237;transform:translateY(110%);transition:transform .3s}
+  .mobile-give.is-visible{transform:none}
+  .mobile-give .btn{justify-content:center;gap:10px;min-height:50px;padding:12px 10px;font-size:14px}
+  .mobile-give .btn--outline{background:transparent;color:#fff;border-color:#fff}
+  .footer{padding-bottom:96px}
+}
+@media(prefers-reduced-motion:reduce){.mobile-give{transition:none}}
+@media(max-width:400px){.header .logo{width:150px}.header-inner{gap:10px}.header-actions{gap:8px}.menu-toggle{width:44px;height:44px;padding:0 10px}}
+@media(max-width:350px){.header .header-actions .btn{display:none}}
