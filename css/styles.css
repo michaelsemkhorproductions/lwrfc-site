@@ -88,12 +88,3 @@ picture{display:block}
   .hero-actions--two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .hero-actions--two .btn{min-width:0;justify-content:center;gap:8px;padding:14px 10px;font-size:14px}
 }
-
-/* ---- 2026-11-06: one "Donate now" per screen ----
-   Desktop: the header button stays hidden while the hero's two big buttons are on screen,
-   then fades in once you scroll past them. Phones: no header button at all (the hero buttons,
-   then the bottom bar, do that job). */
-.header .header-actions .btn{transition:opacity .25s,visibility .25s}
-.js-hero-cta-visible .header .header-actions .btn{opacity:0;visibility:hidden;pointer-events:none}
-@media(max-width:700px){.header .header-actions .btn{display:none!important}}
-@media(prefers-reduced-motion:reduce){.header .header-actions .btn{transition:none}}

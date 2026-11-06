@@ -44,14 +44,3 @@ if(location.hash==='#research'){document.getElementById('research-details').open
     update();
   } else if(bar){bar.classList.add('is-visible');}
 })();
-
-// 2026-11-06: hide the header "Donate now" while the hero's own buttons are visible,
-// so the same button never shows twice on one screen.
-(function(){
-  var heroCta=document.querySelector('.hero-actions');
-  if(!heroCta||!('IntersectionObserver' in window)) return;
-  var root=document.documentElement;
-  new IntersectionObserver(function(entries){
-    root.classList.toggle('js-hero-cta-visible', entries[0].isIntersecting);
-  },{rootMargin:'-104px 0px 0px 0px'}).observe(heroCta);
-})();
