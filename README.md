@@ -53,3 +53,10 @@ The GitHub Pages copy (michaelsemkhorproductions.github.io/lwrfc-site) is only a
 - **Donations** go to the existing Pledge page (`pledge.to/widgets/donate/9228f12f...`), which is
   titled "Lakewood Ranch FC". The site collects no payments or personal data itself.
 - **Contact** links use jeffrey@lakewoodranchfc.org and text 941-725-5881, as in the sample.
+
+## Updating the site (cache)
+
+`index.html` is served with `Cache-Control: no-cache`, so visitors always get the latest page.
+CSS and JS are cached for a year, so **after changing `css/styles.css` or `js/main.js`, bump the
+`?v=` value on their `<link>` / `<script>` tags in `index.html`** (we use the short git commit),
+otherwise returning visitors keep the old file.
