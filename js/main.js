@@ -32,12 +32,15 @@ if(location.hash==='#research'){document.getElementById('research-details').open
     menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   }
-  var bar=document.getElementById('mobileGive'), hero=document.querySelector('.hero'), give=document.getElementById('give');
+  var bar=document.getElementById('mobileGive'), hero=document.querySelector('.hero'), give=document.getElementById('give'), involved=document.getElementById('get-involved');
   if(bar&&hero&&give&&'IntersectionObserver' in window){
     var heroIn=true, giveIn=false;
     function update(){var show=!heroIn&&!giveIn;bar.classList.toggle('is-visible',show);bar.setAttribute('aria-hidden',show?'false':'true');bar.querySelectorAll('a').forEach(function(a){a.tabIndex=show?0:-1;});}
     new IntersectionObserver(function(e){heroIn=e[0].isIntersecting;update();}).observe(hero);
-    new IntersectionObserver(function(e){giveIn=e[0].isIntersecting;update();}).observe(give);
+    // Hide the bar while either the Give or the Get involved section is on screen.
+    var seen={};
+    new IntersectionObserver(function(entries){entries.forEach(function(e){seen[e.target.id]=e.isIntersecting;});giveIn=!!(seen.give||seen['get-involved']);update();}).observe(give);
+    if(involved) new IntersectionObserver(function(entries){entries.forEach(function(e){seen[e.target.id]=e.isIntersecting;});giveIn=!!(seen.give||seen['get-involved']);update();}).observe(involved);
     update();
   } else if(bar){bar.classList.add('is-visible');}
 })();

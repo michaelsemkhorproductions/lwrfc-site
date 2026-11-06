@@ -55,3 +55,36 @@ picture{display:block}
 @media(prefers-reduced-motion:reduce){.mobile-give{transition:none}}
 @media(max-width:400px){.header .logo{width:150px}.header-inner{gap:10px}.header-actions{gap:8px}.menu-toggle{width:44px;height:44px;padding:0 10px}}
 @media(max-width:350px){.header .header-actions .btn{display:none}}
+
+/* ---- 2026-11-06 (Lidis, round 2): two top buttons, own Get involved section, shorter first screen ---- */
+.btn--ghost{background:transparent;color:#fff;border-color:#fff}
+.btn--ghost:hover{background:#fff;color:#102719;border-color:#fff}
+.hero-actions--two{gap:14px}
+.hero-actions--two .btn{min-width:220px}
+
+.involved{background:var(--green);color:#fff;padding:80px 0}
+.involved-head{margin-bottom:34px}
+.involved-head .eyebrow{color:var(--neon)}
+.involved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.involved-card{display:flex;flex-direction:column;gap:10px;padding:28px 26px;border:1px solid #47624c;background:rgba(255,255,255,.04);text-decoration:none;color:#fff;transition:background .2s,border-color .2s}
+.involved-card:hover{background:rgba(233,247,4,.08);border-color:var(--neon)}
+.involved-card__title{font-family:Anton,Impact,sans-serif;font-size:34px;line-height:1.05;text-transform:uppercase;color:var(--neon)}
+.involved-card__text{font-size:18px;color:#e6ede5}
+.involved-card__cta{margin-top:auto;padding-top:8px;font-size:15px;font-weight:700;letter-spacing:.06em}
+.involved-talk{margin-top:28px;font-size:17px;color:var(--muted)}
+.involved-talk a{color:#fff;font-weight:700}
+
+@media(max-width:700px){
+  .involved{padding:56px 0}
+  .involved-grid{grid-template-columns:1fr;gap:12px}
+  .involved-card{padding:20px}
+  .involved-card__title{font-size:28px}
+  .involved-card__text{font-size:16px}
+  /* Shorter first screen on phones: headline, then the two buttons, then the intro */
+  .hero-inner>div:first-child{display:flex;flex-direction:column}
+  .hero .eyebrow{order:0}.hero h1{order:1}.hero-actions--two{order:2;margin-top:26px}.hero p.intro{order:3;font-size:17px;margin:22px 0 0}
+  .hero h1{font-size:clamp(42px,11vw,64px)}
+  .hero-inner{padding-top:34px;gap:28px}
+  .hero-actions--two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hero-actions--two .btn{min-width:0;justify-content:center;gap:8px;padding:14px 10px;font-size:14px}
+}
